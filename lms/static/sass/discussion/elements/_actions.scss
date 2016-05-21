@@ -13,7 +13,7 @@
     .actions-item {
       @include box-sizing(border-box);
       display: block;
-      margin: ($baseline/4) 0;
+      margin: ($baseline/4 + px) 0;
 
       &.is-hidden {
         display: none;
@@ -36,7 +36,7 @@
     top: 100%;
     right: 0;
     pointer-events: none;
-    min-width: ($baseline*6.5);
+    min-width: ($baseline*6.5 + px);
 
     &.is-expanded {
       display: block;
@@ -49,10 +49,10 @@
       position: relative;
       width: 100%;
       border-radius: 3px;
-      margin: ($baseline/4) 0 0 0;
+      margin: ($baseline/4 + px) 0 0 0;
       border: 1px solid $gray-l3;
-      padding: ($baseline/2) ($baseline*0.75);
-      background: $white;
+      padding: ($baseline/2 + px) ($baseline*0.75 + px);
+      background: $forum-color-background;
 
       // ui triangle/nub
       &:after,
@@ -99,14 +99,14 @@
     @include box-sizing(border-box);
     display: inline-block;
     border: 1px solid transparent;
-    border-radius: ($baseline/4);
+    border-radius: ($baseline/4 + px);
     color: $gray-l1;
 
     .action-icon {
       @extend %t-icon7;
       display: inline-block;
-      height: $baseline;
-      width: $baseline;
+      height: ($baseline + px);
+      width: ($baseline + px);
       border: 1px solid $gray-l3;
       border-radius: 3px;
       text-align: center;
@@ -196,7 +196,7 @@
 
       &:hover, &:focus {
         border-color: $blue-d2;
-        background-color: $white;
+        background-color: $forum-color-background;
 
         .action-label {
           color: $blue-d2;
@@ -217,7 +217,7 @@
 
       &:hover, &:focus {
         border-color: $green-d1;
-        background-color: $white;
+        background-color: $forum-color-background;
 
         .action-label {
           color: $green-d2;
@@ -231,7 +231,7 @@
 
       &:hover, &:focus {
         border-color: $gray;
-        background-color: $white;
+        background-color: $forum-color-background;
 
         .action-icon {
           border: 1px solid $gray;
@@ -255,7 +255,7 @@
     .action-list-item {
       @extend %t-copy-sub2;
       display: block;
-      padding: ($baseline/10) 0;
+      padding: ($baseline/10 + px) 0;
       white-space: nowrap;
       @include text-align(right);
       color: $gray-l1;
@@ -266,8 +266,8 @@
 
       .action-icon {
         display: inline-block;
-        width: ($baseline/2);
-        margin-left: ($baseline/4);
+        width: ($baseline/2 + px);
+        margin-left: ($baseline/4 + px);
         color: inherit;
       }
 

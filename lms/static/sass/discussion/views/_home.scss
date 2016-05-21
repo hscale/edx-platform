@@ -3,7 +3,7 @@
 
 // home - layout
 .container .view-discussion-home {
-  padding: ($baseline*2) ($baseline*2) ($baseline/2);
+  padding-left: ($baseline + px);
 
   section {
     border-bottom: 1px solid $gray-l3;
@@ -15,9 +15,8 @@
   }
 
   .label-settings {
-    padding-top: $baseline;
-    padding-bottom: ($baseline/2);
-    text-transform: uppercase;
+    padding-top: ($baseline + px);
+    padding-bottom: ($baseline/2 + px);
   }
 
   .home-header {
@@ -27,18 +26,18 @@
   .home-title {
     @extend %t-title5;
     color: $black;
-    margin-bottom: ($baseline/4);
+    margin-bottom: ($baseline/4 + px);
   }
   .home-description {
     @extend %t-copy-sub2;
-    margin-bottom: ($baseline/2);
+    margin-bottom: ($baseline/2 + px);
   }
   .home-stats {
-    padding: $baseline 0;
+    padding: ($baseline + px) 0;
 
     .label-area {
       display: inline-block;
-      min-width: ($baseline*5);
+      min-width: ($baseline*5 + px);
       width: 25%;
       vertical-align: middle;
 
@@ -48,7 +47,7 @@
     }
 
     .stats-grouping {
-      @include padding-left($baseline);
+      @include padding-left($baseline + px);
       display: inline-block;
       width: 70%;
 
@@ -61,7 +60,7 @@
         .count {
           @extend %t-title4;
           display: inline-block;
-          padding: 0 ($baseline/2);
+          padding: 0 ($baseline/2 + px);
           vertical-align: middle;
         }
 
@@ -83,26 +82,26 @@
     border-bottom: 1px solid $gray-l2;
 
     .row-title {
-      padding: ($baseline*1.5) $baseline;
+      padding: ($baseline*1.5 + px) ($baseline + px);
       background-color: #dedede;
       font-size: 12px;
     }
 
     .row-item-full, .row-item {
       font-size: 12px;
-      padding: 0px $baseline/2;
+      padding: 0 ($baseline/2 + px);
       width: 26%;
       vertical-align: middle;
 
       .icon {
-        padding: 0 ($baseline/2);
+        padding: 0 ($baseline/2 + px);
         font-size: 24px;
         vertical-align: middle;
         display: table-cell;
       }
 
       .fa-stack .icon {
-        padding: 0 ($baseline/2);
+        padding: 0 ($baseline/2 + px);
       }
 
       .row-description {
@@ -115,8 +114,8 @@
 
       .notification-checkbox {
         display: inline-block;
-        @include padding($baseline/4, 0, $baseline/2, 0);
-        @include margin-right($baseline/2);
+        @include padding($baseline/4 + px, 0, $baseline/2 + px, 0);
+        @include margin-right($baseline/2 + px);
         border-radius: 5px;
         border: 1px solid gray;
 
@@ -124,7 +123,7 @@
           display: inline-block;
           text-align: center;
           vertical-align: middle;
-          @include margin-left($baseline/2);
+          @include margin-left($baseline/2 + px);
         }
 
         .icon {

@@ -6,18 +6,6 @@ body.discussion {
 
   .course-tabs .right {
     @include float(right);
-
-    .new-post-btn {
-      @include blue-button;
-      @include margin-right(4px);
-    }
-
-    .new-post-icon {
-      @include margin-right(7px);
-      font-size: 16px;
-      vertical-align: middle;
-      color: $white;
-    }
   }
 
   .edit-post-form {
@@ -30,20 +18,20 @@ body.discussion {
     }
 
     .form-row {
-      margin-top: $baseline;
+      margin-top: ($baseline + px);
     }
 
     .post-cancel {
       @include white-button;
       float: left;
-      margin: ($baseline/2) 0 0 ($baseline*0.75);
+      margin: ($baseline/2 + px) 0 0 ($baseline*0.75 + px);
     }
 
     .post-update {
       @include blue-button;
       float: left;
-      margin-top: ($baseline/2);
-      padding-bottom: ($baseline/10);
+      margin-top: ($baseline/2 + px);
+      padding-bottom: ($baseline/10 + px);
       height: 37px;
 
       &:hover, &:focus {
@@ -55,7 +43,7 @@ body.discussion {
       @include box-sizing(border-box);
       border: 1px solid #aaa;
       border-radius: 3px;
-      padding: 0 ($baseline/2);
+      padding: 0 ($baseline/2 + px);
       width: 100%;
       height: 40px;
       box-shadow: 0 1px 3px $shadow-l1 inset;
@@ -71,7 +59,7 @@ body.discussion {
 
   .thread-title {
     display: block;
-    margin-bottom: $baseline;
+    margin-bottom: ($baseline + px);
     color: $gray-d3;
     font-weight: 700;
     font-size: 21px;
@@ -136,7 +124,7 @@ body.discussion {
 
   .wmd-button-row {
     @include transition(all .2s ease-out 0s);
-    @include margin(($baseline/2), ($baseline/4), ($baseline/4), ($baseline/4));
+    @include margin(($baseline/2 + px), ($baseline/4 + px), ($baseline/4 + px), ($baseline/4 + px));
     position: relative;
     overflow: hidden;
     padding: 0;
@@ -191,11 +179,11 @@ body.discussion {
 
   .wmd-prompt-dialog {
     @extend .modal;
-    background: $white;
+    background: $forum-color-background;
   }
 
   .wmd-prompt-dialog {
-    padding: $baseline;
+    padding: ($baseline + px);
 
     > div {
       font-size: 0.8em;
@@ -245,10 +233,7 @@ body.discussion {
     width: 68%;
     max-width: 800px;
     min-height: 500px;
-    border: 1px solid #aaa;
     border-radius: 3px;
-    background: $white;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
   }
 
   .discussion-article {
@@ -261,24 +246,24 @@ body.discussion {
     }
 
     p + p {
-      margin-top: $baseline;
+      margin-top: ($baseline + px);
     }
   }
 
   .discussion-post header,
   .responses li header {
-    margin-bottom: $baseline;
+    margin-bottom: ($baseline + px);
   }
 
   blockquote {
     background: $gray-l5;
     border-radius: 3px;
-    padding: ($baseline/4) ($baseline/2);
+    padding: ($baseline/4 + px) ($baseline/2 + px);
     font-size: 14px;
   }
 
   .comment-form {
-    padding: ($baseline/2) 0;
+    padding: ($baseline/2 + px) 0;
 
     .wmd-input {
       @include transition(all .2s linear 0s);
@@ -296,7 +281,7 @@ body.discussion {
   .comment-form-input {
     width: 100%;
     height: 31px;
-    padding: 0 ($baseline/2);
+    padding: 0 ($baseline/2 + px);
     @include box-sizing(border-box);
     border: 1px solid $gray-l2;
     border-radius: 3px;
@@ -310,11 +295,10 @@ body.discussion {
 
   .main-article.new {
     display: none;
-    padding: ($baseline*2.5);
+    padding: ($baseline*2.5 + px);
   }
 
   .discussion-reply-new {
-    padding: $baseline ($baseline*1.5);
     @include clearfix();
     @include transition(opacity .2s linear 0s);
 
@@ -345,7 +329,7 @@ body.discussion {
   }
 
   .reply-post-control {
-    margin-top: $baseline;
+    margin-top: ($baseline + px);
   }
 
   .discussion-submit-post {
@@ -365,8 +349,8 @@ body.discussion {
   @extend .discussion-body;
 
   position: relative;
-  margin: $baseline 0;
-  padding: $baseline;
+  margin: ($baseline + px) 0;
+  padding: ($baseline + px);
   background: #f6f6f6 !important;
   border-radius: 3px;
 
@@ -377,14 +361,14 @@ body.discussion {
   }
 
   div.add-response.post-extended-content {
-    margin-top: $baseline;
-    margin-bottom: $baseline;
+    margin-top: ($baseline + px);
+    margin-bottom: ($baseline + px);
 
     button.add-response-btn {
       @include white-button;
       @include linear-gradient(top, $white 35%, $gray-l4);
       position: relative;
-      padding-left: ($baseline*1.5);
+      padding-left: ($baseline*1.5 + px);
       width: 100%;
       box-shadow: 0 1px 1px $shadow-l1;
       @include text-align(left);
@@ -437,21 +421,16 @@ body.discussion {
     }
   }
 
-  .new-post-btn {
-    display: inline-block;
-    @include float(right);
-  }
-
   section.discussion {
     clear: both;
-    padding-top: $baseline;
+    padding-top: ($baseline + px);
 
     .threads {
     }
 
     .discussion-thread {
       padding: 0;
-      margin-bottom: $baseline;
+      margin-bottom: ($baseline + px);
       @include transition(all .25s linear 0s);
 
       p {
@@ -463,12 +442,13 @@ body.discussion {
         border: 1px solid #ddd;
         border-radius: 3px;
         min-height: 0;
-        background: $white;
+        background: $forum-color-background;
         padding: 0;
         box-shadow: 0 1px 0 $shadow;
         @include transition(all .2s linear 0s);
 
         .thread-wrapper {
+          @include border-radius(3px, 3px, 0, 0);
           position: relative;
           overflow-x: hidden;
           overflow-y: auto;
@@ -485,7 +465,7 @@ body.discussion {
               margin-top: 6px;
               margin-right: 8px;
               padding: 0 8px;
-              border-radius: ($baseline/4);
+              border-radius: ($baseline/4 + px);
               font-size: 12px;
               font-weight: 400;
               line-height: 25px;
@@ -496,11 +476,11 @@ body.discussion {
           .responses {
             header {
               padding-bottom: 0;
-              margin-bottom: ($baseline*0.75);
+              margin-bottom: ($baseline*0.75 + px);
 
               .posted-by {
                 float: left;
-                margin-right: ($baseline/4);
+                margin-right: ($baseline/4 + px);
                 font-size: 16px;
               }
             }
@@ -537,13 +517,13 @@ body.discussion {
 
           a {
             display: block;
-            padding: ($baseline*0.25) $baseline;
+            padding: ($baseline*0.25 + px) ($baseline + px);
             font-size: 12px;
             line-height: 30px;
 
             .icon {
               color: $link-color;
-              margin-right: ($baseline*0.25);
+              margin-right: ($baseline*0.25 + px);
             }
           }
         }
@@ -553,7 +533,7 @@ body.discussion {
 
   .new-post-article {
     display: none;
-    margin-top: $baseline;
+    margin-top: ($baseline + px);
 
     .inner-wrapper {
       max-width: 1180px;
@@ -563,35 +543,15 @@ body.discussion {
 
     .thread-title {
       display: block;
-      margin-bottom: $baseline;
+      margin-bottom: ($baseline + px);
       font-size: 21px;
       color: $gray-d3;
       font-weight: 700;
     }
   }
 
-  .new-post-btn {
-    @include blue-button;
-    display: inline-block;
-    font-size: 13px;
-    margin-right: 4px;
-  }
-
-  .new-post-icon {
-    display: block;
-    float: left;
-    width: 16px;
-    height: 17px;
-    margin-top: 8px;
-    @include margin-right(7px);
-    font-size: 16px;
-    @include padding-right($baseline/2);
-    vertical-align: middle;
-    color: $white;
-  }
-
   section.discussion-pagination {
-    margin-top: ($baseline*1.5);
+    margin-top: ($baseline*1.5 + px);
 
     nav.discussion-paginator {
       float: right;
@@ -607,7 +567,7 @@ body.discussion {
           &.current-page span {
             display: inline-block;
             height: 35px;
-            padding: 0 ($baseline*0.75);
+            padding: 0 ($baseline*0.75 + px);
             border: 1px solid $gray-l3;
             border-radius: 3px;
             font-size: 13px;
@@ -623,25 +583,25 @@ body.discussion {
 
   .edit-post-form {
     width: 100%;
-    margin-bottom: $baseline;
+    margin-bottom: ($baseline + px);
     @include clearfix();
     @include box-sizing(border-box);
 
     .form-row {
-      margin-top: $baseline;
+      margin-top: ($baseline + px);
     }
 
     .post-cancel {
       @include white-button;
       float: left;
-      margin: ($baseline/2) 0 0 ($baseline*0.75);
+      margin: ($baseline/2 + px) 0 0 ($baseline*0.75 + px);
     }
 
     .post-update {
       @include blue-button;
       float: left;
       height: 37px;
-      margin-top: ($baseline/2);
+      margin-top: ($baseline/2 + px);
       padding-bottom: 2px;
 
       &:hover, &:focus {
@@ -652,7 +612,7 @@ body.discussion {
     .edit-post-title {
       width: 100%;
       height: 40px;
-      padding: 0 ($baseline/2);
+      padding: 0 ($baseline/2 + px);
       @include box-sizing(border-box);
       border-radius: 3px;
       border: 1px solid #aaa;
@@ -668,7 +628,7 @@ body.discussion {
   @extend .discussion-module;
 
   .discussion-post {
-    padding-bottom: $baseline !important;
+    padding-bottom: ($baseline + px) !important;
   }
 }
 
@@ -680,15 +640,14 @@ body.discussion {
 
 // post pagination
 .response-count {
-  margin-top: $baseline;
-  padding: 0 ($baseline*1.5);
+  margin-top: ($baseline + px);
   color: $gray;
   font-size: 14px;
 }
 
 .response-pagination {
   visibility: visible;
-  padding: ($baseline/2) ($baseline*1.5);
+  padding: ($baseline/2 + px) ($baseline*1.5 + px);
   background-color: $gray-l6;
   box-shadow: 0 1px 1px $gray-l4 inset, 0 -1px 1px $gray-l4 inset;
 
@@ -698,7 +657,7 @@ body.discussion {
 
   .response-display-count {
     display: block;
-    padding: ($baseline/2) 0;
+    padding: ($baseline/2 + px) 0;
     color: $gray;
     font-size: 14px;
   }
@@ -707,7 +666,7 @@ body.discussion {
     @include white-button;
     @include linear-gradient(top, $white 35%, $gray-l4);
     position: relative;
-    margin: ($baseline/2) 0;
+    margin: ($baseline/2 + px) 0;
     border: 1px solid $gray-l2;
     width: 100%;
     box-shadow: 0 1px 1px $shadow-l1;
@@ -715,7 +674,7 @@ body.discussion {
     font-weight: normal;
 
     span.add-response-btn-text {
-      padding-left: ($baseline/5);
+      padding-left: ($baseline/5 + px);
     }
   }
 }

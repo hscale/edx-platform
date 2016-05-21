@@ -29,7 +29,7 @@ body.discussion {
     // a single alert, which can be independently displayed / dismissed
     .search-alert {
       @include transition(none);
-      padding: ($baseline/2) 11px ($baseline/2) 18px;
+      padding: ($baseline/2 + px) 11px ($baseline/2 + px) 18px;
       background-color: $black;
     }
 
@@ -44,7 +44,7 @@ body.discussion {
 
       // alert copy
       .message {
-        @include font-size(12);
+        font-size: 12px;
         color: $white;
 
         em {
@@ -66,10 +66,10 @@ body.discussion {
       text-align: right;
 
       .control {
-        @include font-size(14);
+        font-size: 14px;
         @include transition(none);
         @extend %t-weight5;
-        padding: ($baseline/4) ($baseline/2);
+        padding: ($baseline/4 + px) ($baseline/2 + px);
         color: $white;
 
         // reseting poorly globally scoped hover/focus state for this control

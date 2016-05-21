@@ -9,7 +9,7 @@
   a:link,
   a:visited {
     cursor: pointer;
-    border: 1px solid palette(grayscale, light);
+    border: 1px solid $lms-border-color;
     border-top-style: none;
     border-radius: 0 0 ($baseline/2) + px ($baseline/2) + px;
     background: transparentize(palette(grayscale, white-t), 0.25);
@@ -37,7 +37,7 @@
     background: palette(grayscale, white-t);
     text-decoration: none;
     display: block;
-    border: 1px solid palette(grayscale, light);
+    border: 1px solid $lms-border-color;
 
     &#feedback_link_problem {
       border-bottom-style: none;

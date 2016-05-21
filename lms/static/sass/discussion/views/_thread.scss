@@ -14,13 +14,11 @@ body.discussion, .discussion-module {
 
   // post layout
   .discussion-post {
-    @include padding(($baseline*1.5), ($baseline*1.5), $baseline, ($baseline*1.5));
-    @include border-radius(3px, 3px, 0, 0);
-    background-color: $white;
+    background-color: $forum-color-background;
 
     .wrapper-post-header {
       padding-bottom: 0;
-      margin-bottom: ($baseline*0.75);
+      margin-bottom: ($baseline*0.75 + px);
     }
 
     .post-header-content {
@@ -40,7 +38,7 @@ body.discussion, .discussion-module {
 
   // response layout
   .discussion-response {
-    min-height: ($baseline*5);
+    min-height: ($baseline*5 + px);
 
     .response-header-content {
       display: inline-block;
@@ -50,9 +48,9 @@ body.discussion, .discussion-module {
 
     .response-header-actions {
       @include float(right);
-      @include right($baseline);
+      @include right($baseline + px);
       position: absolute;
-      top: ($baseline);
+      top: ($baseline + px);
     }
   }
 
@@ -62,7 +60,7 @@ body.discussion, .discussion-module {
     .response-body {
       @extend %t-copy-sub2;
       display: inline-block;
-      margin-bottom: ($baseline/2);
+      margin-bottom: ($baseline/2 + px);
       width: flex-grid(10,12);
 
       p + p {
@@ -83,8 +81,8 @@ body.discussion, .discussion-module {
 // +thread - wrapper styling
 .forum-thread-main-wrapper {
   @include border-radius(3px, 3px, 0, 0);
-  border-bottom: 1px solid $white; // Prevent collapsing margins
-  background-color: $white;
+  border-bottom: 1px solid $forum-color-background; // Prevent collapsing margins
+  background-color: $forum-color-background;
 }
 
 // +thread - elements - shared styles
@@ -95,7 +93,7 @@ body.discussion {
 
     // thread - images
     .author-image {
-      @include margin-right($baseline/2);
+      @include margin-right($baseline/2 + px);
       display: inline-block;
       vertical-align: top;
 
@@ -130,7 +128,7 @@ body.discussion {
     // thread - header content details
     .posted-details {
       @extend %t-copy-sub2;
-      margin-top: ($baseline/5);
+      margin-top: ($baseline/5 + px);
       color: $gray-d1;
 
       .username {
@@ -145,7 +143,7 @@ body.discussion {
   }
 
   .discussion-post .post-body, .discussion-response .response-body {
-    @include padding-right($baseline); //ensures content doesn't overlap on post or response actions.
+    @include padding-right($baseline + px); //ensures content doesn't overlap on post or response actions.
   }
 }
 
@@ -163,7 +161,7 @@ body.view-in-course .discussion-article {
     .post-title {
       @extend %t-title4;
       @extend %t-ultrastrong;
-      margin-bottom: ($baseline/4);
+      margin-bottom: ($baseline/4 + px);
       letter-spacing: 0;
     }
   }
@@ -179,7 +177,7 @@ body.view-in-course .discussion-article {
     @extend %t-copy-sub2;
     margin-top: $baseline;
     color: $gray-d1;
-    padding: ($baseline*0.75);
+    padding: ($baseline*0.75 + px);
     background-color: $gray-l6;
     border-radius: 3px;
 
@@ -190,15 +188,11 @@ body.view-in-course .discussion-article {
 
     // post visibility - cohorts
     .group-visibility-label {
-      margin-top: ($baseline/4);
+      margin-top: ($baseline/4 + px);
     }
   }
 }
 
-// +post - answered question - collapsed comment area
-body.discussion, .discussion-thread.expanded {
-  .forum-thread-main-wrapper {
-    box-shadow: 0 1px 3px $shadow;
-  }
+.discussion-article {
+  padding: 0 ($baseline*1.5 + px) 0 ($baseline*1.5 + px);
 }
-

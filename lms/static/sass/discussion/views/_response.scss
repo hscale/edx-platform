@@ -13,8 +13,8 @@
 // +wrapper - response list
 .container .discussion-body .responses {
   list-style: none;
-  margin-top: $baseline;
-  padding: 0 ($baseline*1.5);
+  margin-top: ($baseline + px);
+  padding: 0 ($baseline*1.5 + px);
 
   &:empty {
     display: none;
@@ -24,7 +24,7 @@
   .forum-response {
     @include animation(fadeIn .3s);
     position: relative;
-    margin: $baseline 0;
+    margin: ($baseline + px) 0;
     border: 1px solid $gray-l2;
     border-radius: 3px;
     box-shadow: 0 0 1px $shadow;
@@ -34,8 +34,8 @@
   .discussion-response {
     @include box-sizing(border-box);
     @include border-radius(3px, 3px, 0, 0);
-    padding: $baseline;
-    background-color: $white;
+    padding: ($baseline + px);
+    background-color: $forum-color-background;
   }
   
   .posted-by {
@@ -50,22 +50,22 @@
 
     // CASE: larger username for responses 
     .username {
-      @include font-size(14);
+      font-size: 14px;
       @extend %t-weight5;
     }
   }
 
   // rtl resets for response list elements
   .response-body ol, .response-body ul { // Fix up the RTL-only _reset.scss, but only in specific places
-    @include padding-left($baseline*2);
+    @include padding-left($baseline*2 + px);
     @include padding-right(0);
   }
 }
 
 // +element - add response area
 .container .discussion-body .add-response {
-  margin-top: $baseline;
-  padding: 0 ($baseline*1.5);
+  margin-top: ($baseline + px);
+  padding: 0 ($baseline*1.5 + px);
 
   .add-response-btn {
     @include white-button;
@@ -89,7 +89,7 @@
     }
 
     span.add-response-btn-text {
-      @include padding-left($baseline/5);
+      @include padding-left($baseline/5 + px);
     }
   }
 }
@@ -97,9 +97,9 @@
 // +CASE: answered question - collapsed comments in answers
 .forum-response .action-show-comments {
   @include box-sizing(border-box);
-  @include font-size(13);
+  font-size: 13px;
   display: block;
-  padding: ($baseline/2) $baseline;
+  padding: ($baseline/2 + px) ($baseline + px);
   width: 100%;
   background: $gray-l6;
   box-shadow: 0 1px 3px -1px $shadow inset;
@@ -128,14 +128,13 @@
     left: 0;
     width: 100%;
     height: 14px;
-    padding: 1px ($baseline/4);
+    padding: 1px ($baseline/4 + px);
     @include box-sizing(border-box);
     border-radius: 2px 2px 0 0;
     background: #009fe2;
     font-size: 9px;
     font-weight: 700;
     color: $white;
-    text-transform: uppercase;
   }
 
   // CASE: banner - community TA response
@@ -145,14 +144,13 @@
     left: 0;
     width: 100%;
     height: 14px;
-    padding: 1px ($baseline/4);
+    padding: 1px ($baseline/4 + px);
     @include box-sizing(border-box);
     border-radius: 2px 2px 0 0;
     background: $forum-color-community-ta;
     font-size: 9px;
     font-weight: 700;
     color: $white;
-    text-transform: uppercase;
   }
 
   // STATE: loading - response list
@@ -174,14 +172,13 @@
 
   > li {
     border-top: 1px solid $gray-l4;
-    padding: ($baseline/2) $baseline;
+    padding: ($baseline/2 + px) ($baseline + px);
   }
-
 
   blockquote {
     background: $gray-l4;
     border-radius: 3px;
-    padding: ($baseline/4) ($baseline/2);
+    padding: ($baseline/4 + px) ($baseline/2 + px);
     font-size: 14px;
   }
 
@@ -189,8 +186,8 @@
     @include clearfix();
 
     .comment-form-input {
-      padding: ($baseline/4) ($baseline/2);
-      background-color: $white;
+      padding: ($baseline/4 + px) ($baseline/2 + px);
+      background-color: $forum-color-background;
       font-size: 14px;
     }
 

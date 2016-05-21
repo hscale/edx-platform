@@ -1,0 +1,19 @@
+// discussion - utilities - variables
+// ====================
+
+// color variables
+$forum-color-background: $lms-container-background-color !default;
+$forum-color-active-thread: $lms-active-color !default;
+$forum-color-active-text: $lms-container-background-color !default;
+$forum-color-pinned: $pink !default;
+$forum-color-reported: $pink !default;
+$forum-color-closed: $black !default;
+$forum-color-following: $blue !default;
+$forum-color-staff: $blue !default;
+$forum-color-community-ta: $green-d1 !default;
+$forum-color-marked-answer: $green-d1 !default;
+
+// post images
+$post-image-dimension: ($baseline*3 + px) !default;  // image size  + margin
+$response-image-dimension: ($baseline*2.5 + px) !default; // image size  + margin
+$comment-image-dimension: ($baseline*2 + px) !default; // image size  + margin

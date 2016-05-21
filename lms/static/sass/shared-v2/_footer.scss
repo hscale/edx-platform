@@ -47,6 +47,10 @@
         @include clearfix();
         margin: $footer_margin;
 
+        ol {
+          list-style: none;
+        }
+
         li {
           @include float(left);
           margin-right: ($baseline*0.75) + px;
