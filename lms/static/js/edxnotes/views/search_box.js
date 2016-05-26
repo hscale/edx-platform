@@ -15,7 +15,8 @@ define([
         },
 
         errorMessage: gettext('An error has occurred. Make sure that you are connected to the Internet, and then try refreshing the page.'),
-        emptyFieldMessage: (function () {
+
+        emptyFieldMessageHtml: (function () {
             var message = gettext('Please enter a term in the {anchorStart} search field{anchorEnd}.');
             return HtmlUtils.interpolateHtml(message, {
                 anchorStart: HtmlUtils.HTML('<a href="#search-notes-input">'),
@@ -96,7 +97,7 @@ define([
 
         validateField: function (searchQuery) {
             if (!($.trim(searchQuery))) {
-                this.options.error(this.emptyFieldMessage, searchQuery);
+                this.options.error(this.emptyFieldMessageHtml, searchQuery);
                 return false;
             }
             return true;

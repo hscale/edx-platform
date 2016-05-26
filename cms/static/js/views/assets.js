@@ -236,10 +236,7 @@ define([
 
                 if (!this.largeFileErrorMsg) {
                     $('.upload-modal h1').text(gettext('Uploading'));
-                    HtmlUtils.setHtml(
-                        $('.upload-modal .file-name'),
-                        file.substring(file.lastIndexOf('\\') + 1)
-                    );
+                    $('.upload-modal .file-name').text(file.substring(file.lastIndexOf('\\') + 1));
                     $('.upload-modal .choose-file-button').hide();
                     $('.upload-modal .progress-bar').removeClass('loaded').show();
                 }
@@ -253,11 +250,11 @@ define([
                     $fileName = $('.upload-modal .file-name');
 
                 $progressFill.width(percentVal);
-                HtmlUtils.setHtml($progressFill, percentVal);
+                $progressFill.text(percentVal);
                 $('.upload-modal .progress-bar').hide();
 
                 $fileName.show();
-                HtmlUtils.setHtml($fileName, '');
+                $fileName.text('');
                 $('.upload-modal .choose-file-button').text(gettext('Choose File'));
                 $('.upload-modal .embeddable-xml-input').val('');
                 $('.upload-modal .embeddable').hide();

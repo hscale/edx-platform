@@ -7,7 +7,7 @@
             "edx-ui-toolkit/js/utils/html-utils",
             "text!common/templates/components/paging-footer.underscore"
         ],
-        function(_, gettext, Backbone, HtmlUtils, paging_footer_template) {
+        function(_, gettext, Backbone, HtmlUtils, pagingFooterTemplate) {
 
             var PagingFooter = Backbone.View.extend({
                 events : {
@@ -38,7 +38,7 @@
 
                     HtmlUtils.setHtml(
                         this.$el,
-                        HtmlUtils.template(paging_footer_template)({
+                        HtmlUtils.template(pagingFooterTemplate)({
                             current_page: this.collection.getPageNumber(),
                             total_pages: this.collection.getTotalPages(),
                             paginationLabel: this.paginationLabel

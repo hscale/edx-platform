@@ -3,8 +3,9 @@ define([
     'backbone',
     'gettext',
     'edx-ui-toolkit/js/utils/html-utils',
+    'edx-ui-toolkit/js/utils/string-utils',
     'text!templates/paging-header.underscore'
-], function(_, Backbone, gettext, HtmlUtils, pagingHeaderTemplate) {
+], function(_, Backbone, gettext, HtmlUtils, StringUtils, pagingHeaderTemplate) {
         'use strict';
         /* jshint maxlen:false */
         var PagingHeader = Backbone.View.extend({
@@ -95,9 +96,9 @@ define([
                     htmlMessage = HtmlUtils.HTML('<span class="count-total">{totalItemsLabel}</span>');
 
                 // Translators: turns into "25 total" to be used in other sentences, e.g. "Showing 0-9 out of 25 total".
-                totalItemsLabel = HtmlUtils.interpolateHtml(gettext('{totalItems} total'), {
+                totalItemsLabel = StringUtils.interpolate(gettext('{totalItems} total'), {
                     totalItems: this.view.collection.getTotalRecords()
-                }, true);
+                });
 
                 return HtmlUtils.interpolateHtml(htmlMessage, {
                     totalItemsLabel: totalItemsLabel
