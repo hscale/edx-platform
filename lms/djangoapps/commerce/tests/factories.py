@@ -35,7 +35,7 @@ class ProductFactory(factory.Factory):
     class Meta(object):
         model = dict
 
-    id = factory.Sequence(lambda n: n)
+    id = factory.Sequence(lambda n: n)  # pylint: disable=invalid-name
     url = 'http://test/api/v2/products/' + str(id)
     product_class = 'Seat'
     title = FuzzyText(prefix='Seat in ')

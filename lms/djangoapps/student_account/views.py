@@ -330,12 +330,20 @@ def get_user_orders(user):
     user_orders = []
     allowed_course_modes = ['professional', 'verified', 'credit']
     try:
-        commerce_user_orders = ecommerce_api_client(user).orders.get()
+        response = ecommerce_api_client(user).orders.get()
+        commerce_user_orders = response.get('results', no_data)
+        page = 1
+        next_page = response.get('next', None)
+        while next_page:
+            page += 1
+            response = ecommerce_api_client(user).orders.get({'page': page})
+            commerce_user_orders += response.get('results', no_data)
+            next_page = response.get('next', None)
     except Exception:  # pylint: disable=broad-except
         log.exception('Failed to retrieve data from the Commerce API.')
         return no_data
 
-    for order in commerce_user_orders['results']:
+    for order in commerce_user_orders:
         if order['status'].lower() == 'complete':
             for attribute in order['lines'][0]['product']['attribute_values']:
                 if attribute['name'] == 'certificate_type' and attribute['value'] in allowed_course_modes:
