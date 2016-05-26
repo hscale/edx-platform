@@ -1384,9 +1384,8 @@ class JavaScriptLinter(BaseLinter):
         )
         # Match quoted HTML strings next to a '+'.
         regex_concat_with_html = re.compile(
-            r"(\+\s*{}|{}\s*\+)".format(
-                regex_string_with_html.format(quote='quote1'),
-                regex_string_with_html.format(quote='quote2')
+            r"(\+\s*{string_with_html}|{string_with_html}\s*\+)".format(
+                string_with_html=regex_string_with_html,
             ),
             re.VERBOSE
         )
