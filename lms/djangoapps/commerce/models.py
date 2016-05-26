@@ -13,6 +13,7 @@ class CommerceConfiguration(ConfigurationModel):
     class Meta(object):
         app_label = "commerce"
 
+    API_NAME = 'commerce'
     CACHE_KEY = 'commerce.api.data'
 
     checkout_on_ecommerce_service = models.BooleanField(
