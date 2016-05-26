@@ -16,6 +16,7 @@ from course_modes.models import CourseMode
 from edxmako.shortcuts import render_to_response
 from enrollment.api import get_enrollments, update_enrollment
 from enrollment.errors import CourseModeNotFoundError
+from enrollment.serializers import ModeSerializer
 from lms.djangoapps.support.decorators import require_support_permission
 from lms.djangoapps.support.serializers import ManualEnrollmentSerializer
 from lms.djangoapps.verify_student.models import VerificationDeadline
@@ -59,8 +60,10 @@ class EnrollmentSupportListView(GenericAPIView):
         enrollments = get_enrollments(user.username)
         for enrollment in enrollments:
             # Folds the course_details field up into the main JSON object.
+            from nose.tools import set_trace; set_trace()
             enrollment.update(**enrollment.pop('course_details'))
             course_key = CourseKey.from_string(enrollment['course_id'])
+            enrollment['course_modes'] = self.get_course_modes(course_key)
             # Add the price of the course's verified mode.
             self.include_verified_mode_info(enrollment, course_key)
             # Add manual enrollment history, if it exists
@@ -150,3 +153,25 @@ class EnrollmentSupportListView(GenericAPIView):
         if manual_enrollment_audit is None:
             return {}
         return ManualEnrollmentSerializer(instance=manual_enrollment_audit).data
+
+    @staticmethod
+    def get_course_modes(course_key):
+        """
+        Returns a list of the all modes including expired modes for a given course id
+
+        Arguments:
+            course_id (CourseKey): Search for course modes for this course.
+
+        Returns:
+            list of `Mode`
+
+        """
+        course_modes = CourseMode.modes_for_course(
+            course_key,
+            include_expired=True,
+            only_selectable=False
+        )
+        return [
+            ModeSerializer(mode).data
+            for mode in course_modes
+        ]
