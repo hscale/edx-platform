@@ -1,4 +1,4 @@
-""" Factories for generating fake credentials-related data. """
+""" Factories for generating fake commerce-related data. """
 import factory
 from factory.fuzzy import FuzzyText
 
@@ -43,13 +43,13 @@ class ProductFactory(factory.Factory):
     attribute_values = []
 
 
-class ProductAttirbuteFactory(factory.Factory):
-    """ Factory for stubbing Product attribute resources from
+class ProductAttributeFactory(factory.Factory):
+    """ Factory for stubbing product attribute resources from
     Ecommerce (v2).
     """
     class Meta(object):
         model = dict
 
-    name = 'certificate_type'
-    code = 'certificate_type'
-    value = 'verified'
+    name = FuzzyText()
+    code = FuzzyText()
+    value = FuzzyText()

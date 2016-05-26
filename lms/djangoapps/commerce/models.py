@@ -33,10 +33,10 @@ class CommerceConfiguration(ConfigurationModel):
         )
     )
 
+    def __unicode__(self):
+        return "Commerce configuration"
+
     @property
     def is_cache_enabled(self):
         """Whether responses from the Ecommerce API will be cached."""
         return self.cache_ttl > 0
-
-    def __unicode__(self):
-        return "Commerce configuration"

@@ -67,8 +67,9 @@ def checkout_receipt(request):
             "If your course does not appear on your dashboard, contact {payment_support_link}."
         ).format(payment_support_link=payment_support_link)
 
-    if is_payment_complete:
-        cache_key = CommerceConfiguration.CACHE_KEY + '.' + request.user.username
+    commerce_configuration = CommerceConfiguration.current()
+    if is_payment_complete and commerce_configuration.enabled and commerce_configuration.is_cache_enabled:
+        cache_key = commerce_configuration.CACHE_KEY + '.' + request.user.username
         cache.delete(cache_key)
 
     context = {

@@ -27,8 +27,8 @@ from external_auth.login_and_register import (
     register as external_auth_register
 )
 from lang_pref.api import released_languages, all_languages
-from openedx.core.djangoapps.programs.models import ProgramsApiConfig
 from openedx.core.djangoapps.commerce.utils import ecommerce_api_client
+from openedx.core.djangoapps.programs.models import ProgramsApiConfig
 from openedx.core.djangoapps.theming.helpers import is_request_in_themed_site, get_value as get_themed_value
 from openedx.core.djangoapps.user_api.accounts.api import request_password_change
 from openedx.core.djangoapps.user_api.errors import UserNotFound
@@ -315,7 +315,12 @@ def get_user_orders(user):
     Returns:
         list of dict, representing orders returned by the Ecommerce service.
     """
+    no_data = []
     commerce_configuration = CommerceConfiguration.current()
+    if not commerce_configuration.enabled:
+        log.warning('%s configuration is disabled.', commerce_configuration.API_NAME)
+        return no_data
+
     if commerce_configuration.is_cache_enabled:
         cache_key = commerce_configuration.CACHE_KEY + '.' + user.username
         cached = cache.get(cache_key)
@@ -328,7 +333,7 @@ def get_user_orders(user):
         commerce_user_orders = ecommerce_api_client(user).orders.get()
     except Exception:  # pylint: disable=broad-except
         log.exception('Failed to retrieve data from the Commerce API.')
-        return None
+        return no_data
 
     for order in commerce_user_orders['results']:
         if order['status'].lower() == 'complete':
@@ -348,7 +353,8 @@ def get_user_orders(user):
                         user_orders.append(order_data)
                     except KeyError:
                         log.exception('Invalid order structure: %r', order)
-                        return None
+                        return no_data
+
     if commerce_configuration.is_cache_enabled:
         cache.set(cache_key, user_orders, commerce_configuration.cache_ttl)
 

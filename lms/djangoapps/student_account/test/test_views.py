@@ -537,14 +537,14 @@ class AccountSettingsViewTest(ThirdPartyAuthTestMixin, TestCase, ProgramsApiConf
         with mock_get_orders():
             order_detail = get_user_orders(self.user)
 
-        order_num = mock_get_orders.default_response['results'][0]['number']
+        user_order = mock_get_orders.default_response['results'][0]
         expected = [
             {
-                'number': order_num,
-                'price': mock_get_orders.default_response['results'][0]['total_excl_tax'],
-                'title': mock_get_orders.default_response['results'][0]['lines'][0]['title'],
+                'number': user_order['number'],
+                'price': user_order['total_excl_tax'],
+                'title': user_order['lines'][0]['title'],
                 'order_date': 'Jan 01, 2016',
-                'receipt_url': '/commerce/checkout/receipt/?orderNum=' + order_num
+                'receipt_url': '/commerce/checkout/receipt/?orderNum=' + user_order['number']
             }
         ]
         self.assertEqual(order_detail, expected)
@@ -553,7 +553,7 @@ class AccountSettingsViewTest(ThirdPartyAuthTestMixin, TestCase, ProgramsApiConf
         with mock_get_orders(exception=exceptions.HttpNotFoundError):
             order_detail = get_user_orders(self.user)
 
-        self.assertEqual(order_detail, None)
+        self.assertEqual(order_detail, [])
 
     def test_incomplete_order_detail(self):
         response = {
@@ -562,7 +562,7 @@ class AccountSettingsViewTest(ThirdPartyAuthTestMixin, TestCase, ProgramsApiConf
                     status='Incomplete',
                     lines=[
                         factories.OrderLineFactory(
-                            product=factories.ProductFactory(attribute_values=[factories.ProductAttirbuteFactory()])
+                            product=factories.ProductFactory(attribute_values=[factories.ProductAttributeFactory()])
                         )
                     ]
                 )
@@ -579,7 +579,8 @@ class AccountSettingsViewTest(ThirdPartyAuthTestMixin, TestCase, ProgramsApiConf
                 factories.OrderFactory(
                     lines=[
                         factories.OrderLineFactory(
-                            product=factories.ProductFactory(attribute_values=[factories.ProductAttirbuteFactory(
+                            product=factories.ProductFactory(attribute_values=[factories.ProductAttributeFactory(
+                                name='certificate_type',
                                 value='honor'
                             )])
                         )

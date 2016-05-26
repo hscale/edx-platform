@@ -127,7 +127,10 @@ class mock_get_orders(mock_ecommerce_api_endpoint):  # pylint: disable=invalid-n
             factories.OrderFactory(
                 lines=[
                     factories.OrderLineFactory(
-                        product=factories.ProductFactory(attribute_values=[factories.ProductAttirbuteFactory()])
+                        product=factories.ProductFactory(attribute_values=[factories.ProductAttributeFactory(
+                            name='certificate_type',
+                            value='verified'
+                        )])
                     )
                 ]
             )
