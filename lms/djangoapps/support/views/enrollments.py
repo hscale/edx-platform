@@ -60,7 +60,6 @@ class EnrollmentSupportListView(GenericAPIView):
         enrollments = get_enrollments(user.username)
         for enrollment in enrollments:
             # Folds the course_details field up into the main JSON object.
-            from nose.tools import set_trace; set_trace()
             enrollment.update(**enrollment.pop('course_details'))
             course_key = CourseKey.from_string(enrollment['course_id'])
             enrollment['course_modes'] = self.get_course_modes(course_key)
